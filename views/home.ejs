@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <tittle>
+            <%= title%>
+        </tittle>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1>Rendered from EJS</h1>
+        <%for(let i=0;i<contact_list.length;i++){%>
+            <p>NAME: <%=contact_list[i].name%></p>
+            <p>PHONE: <%=contact_list[i].phone%></p>
+            <!-- string param  -->
+            <!-- <a href="/delete-contact/<%=contact_list[i].phone%>">delete</a> -->
+            <!-- query param -->
+            <a href="/delete-contact/?id=<%=contact_list[i]._id%>">delete</a>
+        <%}%>
+        <form action="/create-contact" method="POST">
+            <!-- sending data, as {key,value} pair -->
+            <!-- value->input and key ->name -->
+            <input type="text" name="name" placeholder="enter name">
+            <input type="number" name="phone" placeholder="enter phone">
+            <button type="submit">Add contact</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
